@@ -28,4 +28,11 @@ public class UsuarioControladorCliente {
         usuarioDAOCliente.agregarUsuarioCliente(nombre,email);
         System.out.println("Usuario agregado con exito.");
     }
+    public void eliminarUsuarioCliente()throws SQLException{
+        Scanner xy=new Scanner(System.in);
+        System.out.print("Ingrese el ID del Cliente a Eliminar: ");
+        int id= xy.nextInt();
+        usuarioDAOCliente.eliminarUsuarioCliente(id);
+            System.out.println("Cliente eliminado correctamente.");
+    }
 }

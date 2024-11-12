@@ -6,7 +6,7 @@ public class Videojuegos {
     private Double precio;
     private String clasificacion;
     private int existencias;
-    Videojuegos(int id, String nombre, Double precio,String clasificacion,int existencias){
+    Videojuegos(int id, String nombre, Double precio, String clasificacion, int existencias, int id_desarroladora, String nombreDesarrrolladora){
         this.id=id;
         this.nombre=nombre;
         this.precio=precio;

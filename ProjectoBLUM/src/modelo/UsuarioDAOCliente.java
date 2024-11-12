@@ -6,8 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class UsuarioDAOCliente {
+    Scanner xy=new Scanner(System.in);
     private Connection conexion;
     public UsuarioDAOCliente(Connection conexion){
         this.conexion=conexion;
@@ -37,6 +39,15 @@ public class UsuarioDAOCliente {
             stmt.executeUpdate();
         }catch(SQLException e){
         throw new RuntimeException("Error al obtener los clientes"+e.getMessage(),e);
+        }
+    }
+    public void eliminarUsuarioCliente(int id)throws SQLException{
+        String sql="DELETE FROM usuariosCliente WHERE id=?";
+        try (PreparedStatement stmt= conexion.prepareStatement(sql)){
+            stmt.setInt(1,id);
+            stmt.executeUpdate();
+            }catch (SQLException e){
+            throw new RuntimeException("Error al eliminar el cliente: "+e.getMessage());
         }
     }
 }

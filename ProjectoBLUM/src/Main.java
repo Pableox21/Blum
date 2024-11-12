@@ -47,6 +47,7 @@ public class Main {
                                 System.out.println("\n===Menú de Gestión de Clientes===");
                                 System.out.println("1.Mostrar Clientes");
                                 System.out.println("2.Agregar Cliente");
+                                System.out.println("3.Eliminar Cliente");
                                 System.out.println("0.Atras");
                                 System.out.print("Selecciona una opción: ");
                                 opcion1 = scanner.nextInt();
@@ -56,6 +57,9 @@ public class Main {
                                         break;
                                     case 2:
                                         usuarioControladorCliente.agregarUsuarioCliente();
+                                        break;
+                                    case 3:
+                                        usuarioControladorCliente.eliminarUsuarioCliente();
                                         break;
                                     case 0:
                                         System.out.println("Saliendo de gestión de Clientes...");
@@ -71,6 +75,7 @@ public class Main {
                                 System.out.println("\n===Menú de Gestión de Empleados===");
                                 System.out.println("1.Mostrar Empleados");
                                 System.out.println("2.Agregar Empleado");
+                                System.out.println("3.Eliminar Empleado");
                                 System.out.println("0.Atras");
                                 System.out.print("Selecciona una opción: ");
                                 opcion2 = scanner.nextInt();
@@ -80,6 +85,9 @@ public class Main {
                                         break;
                                     case 2:
                                         usuarioControladorEmpleado.agregarUsuarioEmpleado();
+                                        break;
+                                    case 3:
+                                        usuarioControladorEmpleado.eliminarUsuarioEmpleado();
                                         break;
                                     case 0:
                                         System.out.println("Saliendo de gestión de Clientes...");
@@ -95,6 +103,10 @@ public class Main {
                                 System.out.println("\n===Gestion de videojuegos===");
                                 System.out.println("1.Mostrar Inventario");
                                 System.out.println("2.Agregar Videojuegos");
+                                System.out.println("3.Eliminar Videojuegos");
+                                System.out.println("3.Mostrar Desarrolladoras");
+                                System.out.println("3.Agregar Desarrolladora");
+                                System.out.println("4.Eliminar Desarrolladora");
                                 System.out.println("0.Atras");
                                 System.out.print("Selecciona una opción: ");
                                 opcion3 = scanner.nextInt();

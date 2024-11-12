@@ -26,8 +26,6 @@ public class VideojuegoControlador {
         System.out.print("Ingrese el correo : ");
         String email= xy.nextLine();
 
-        videojuegosDAO.agregarVideojuego(nombre,email);
-        System.out.println("Usuario agregado con exito.");
     }
 }
 

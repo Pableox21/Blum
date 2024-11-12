@@ -39,4 +39,13 @@ public class UsuarioDAOEmpleado {
             throw new RuntimeException("Error al obtener los empleados"+e.getMessage(),e);
         }
     }
+    public void eliminarUsuarioEmpleado(int id)throws SQLException{
+        String sql="DELETE FROM usuariosEmpleado WHERE id=?";
+        try (PreparedStatement stmt= conexion.prepareStatement(sql)){
+            stmt.setInt(1,id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException("Error al eliminar el empleado: "+e.getMessage());
+        }
+    }
 }
