@@ -30,18 +30,9 @@ public class VideojuegosDAO {
                 videojuego.add(videojuegos);
             }
         }catch (SQLException e){
-            throw new RuntimeException("Error al obtener los empleado"+e.getMessage(),e);
+            throw new RuntimeException("Error al obtener los videojuegos"+e.getMessage(),e);
         }
         return videojuego;
-    }
-    public void agragarDesarrolladora(String nombre)throws SQLException{
-        String sql="INSERT INTO Desarrolladora(nombre) VALUES(?)";
-        try (PreparedStatement stmt=conexion.prepareStatement(sql)){
-            stmt.setString(1,nombre);
-            stmt.executeUpdate();
-        }catch (SQLException e){
-            throw new RuntimeException("Error al obtener la desarrolladora"+e.getMessage(),e);
-        }
     }
     public void agregarVideojuego(String nombre,Double precio,String clasificacion,int existencias,int id_dessarroladora)throws SQLException{
         String sql="INSERT INTO Videojuegos(nombre,precio,clasificacion,existencias,id_desarrolladora) VALUES(?,?,?,?,?)";
@@ -53,7 +44,7 @@ public class VideojuegosDAO {
             stmt.setInt(5,id_dessarroladora);
             stmt.executeUpdate();
         }catch(SQLException e){
-            throw new RuntimeException("Error al obtener los empleados"+e.getMessage(),e);
+            throw new RuntimeException("Error al obtener los videojuegos"+e.getMessage(),e);
         }
     }
 }
