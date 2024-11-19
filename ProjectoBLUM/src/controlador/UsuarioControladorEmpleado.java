@@ -30,8 +30,8 @@ public class UsuarioControladorEmpleado {
         System.out.println("Usuario agregado con exito.");
     }
     public void eliminarUsuarioEmpleado()throws SQLException{
-        Scanner xy=new Scanner(System.in);
-        System.out.print("Ingrese el ID del Empleado a Eliminar: ");
+         Scanner xy=new Scanner(System.in);
+       System.out.print("Ingrese el ID del Empleado a Eliminar: ");
         int id= xy.nextInt();
         usuarioDAOEmpleado.eliminarUsuarioEmpleado(id);
         System.out.println("Empleado eliminado correctamente.");

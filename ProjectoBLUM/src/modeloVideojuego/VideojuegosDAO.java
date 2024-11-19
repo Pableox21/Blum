@@ -34,17 +34,27 @@ public class VideojuegosDAO {
         }
         return videojuego;
     }
-    public void agregarVideojuego(String nombre,Double precio,String clasificacion,int existencias,int id_dessarroladora)throws SQLException{
-        String sql="INSERT INTO Videojuegos(nombre,precio,clasificacion,existencias,id_desarrolladora) VALUES(?,?,?,?,?)";
+    public void agregarVideojuego(String nombre,Double precio,String clasificacion,int existencias,int id_dessarrolladora)throws SQLException{
+        String sql="INSERT INTO Videojuego(nombre,precio,clasificacion,existencias,id_desarrolladora) VALUES(?,?,?,?,?)";
         try(PreparedStatement stmt=conexion.prepareStatement(sql)){
             stmt.setString(1,nombre);
             stmt.setDouble(2,precio);
             stmt.setString(3,clasificacion);
             stmt.setInt(4,existencias);
-            stmt.setInt(5,id_dessarroladora);
+            stmt.setInt(5,id_dessarrolladora);
             stmt.executeUpdate();
         }catch(SQLException e){
             throw new RuntimeException("Error al obtener los videojuegos"+e.getMessage(),e);
+        }
+    }
+
+    public void eliminarVideojuego(int id)throws SQLException{
+        String sql="DELETE FROM videojuego WHERE id=?";
+        try (PreparedStatement stmt= conexion.prepareStatement(sql)){
+            stmt.setInt(1,id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException("Error al eliminar el videojuego: "+e.getMessage());
         }
     }
 }

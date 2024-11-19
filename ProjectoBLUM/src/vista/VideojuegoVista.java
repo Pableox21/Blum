@@ -6,7 +6,7 @@ import java.util.List;
 
 public class VideojuegoVista {
     public void mostrarVideojuegos(List<Videojuegos> videojuego){
-        System.out.println("\n***Lista de Usuarios***");
+        System.out.println("\n***Lista de Videojuegos***");
         if(videojuego.isEmpty()){
             System.out.println("No hay usuarios registrados.");
         }else{

@@ -38,6 +38,9 @@ public class Main {
                     System.out.println("1.Gestión de Clientes");
                     System.out.println("2.Gestión de empleados");
                     System.out.println("3.Gestión de videojuegos");
+                    System.out.println("4.Gestión de consolas");
+                    System.out.println("5.Gestión de accesorios");
+                    System.out.println("6.Gestión de desarrolladoras");
                     System.out.println("0.Salir");
                     System.out.print("Selecciona una opción: ");
                     opcion=scanner.nextInt();
@@ -104,9 +107,6 @@ public class Main {
                                 System.out.println("1.Mostrar Inventario");
                                 System.out.println("2.Agregar Videojuegos");
                                 System.out.println("3.Eliminar Videojuegos");
-                                System.out.println("3.Mostrar Desarrolladoras");
-                                System.out.println("3.Agregar Desarrolladora");
-                                System.out.println("4.Eliminar Desarrolladora");
                                 System.out.println("0.Atras");
                                 System.out.print("Selecciona una opción: ");
                                 opcion3 = scanner.nextInt();
@@ -116,6 +116,9 @@ public class Main {
                                         break;
                                     case 2:
                                         videojuegoControlador.agregarVideojuegos();
+                                        break;
+                                    case 3:
+                                        videojuegoControlador.eliminarVideojuego();
                                         break;
                                     case 0:
                                         System.out.println("Saliendo de gestión de Videojuegos...");
