@@ -32,16 +32,25 @@ public class ConsolaDAO {
         }
         return consolas;
     }
-    public void agregarConsola(String nombre,Double precio,int existencias,int id_dessarroladora)throws SQLException{
+    public void agregarConsola(String nombre,Double precio,int existencias,int id_dessarrolladora)throws SQLException{
         String sql="INSERT INTO consola(nombre,precio,existencias,id_desarrolladora) VALUES(?,?,?,?)";
         try(PreparedStatement stmt=conexion.prepareStatement(sql)){
             stmt.setString(1,nombre);
             stmt.setDouble(2,precio);
             stmt.setInt(4,existencias);
-            stmt.setInt(5,id_dessarroladora);
+            stmt.setInt(5,id_dessarrolladora);
             stmt.executeUpdate();
         }catch(SQLException e){
             throw new RuntimeException("Error al obtener las consolas"+e.getMessage(),e);
+        }
+    }
+    public void eliminarConsola(int id)throws SQLException{
+        String sql="DELETE FROM consola WHERE id=?";
+        try (PreparedStatement stmt= conexion.prepareStatement(sql)){
+            stmt.setInt(1,id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException("Error al eliminar la consola: "+e.getMessage());
         }
     }
 }

@@ -12,30 +12,39 @@ public class DesarrolladoraDAO {
     public DesarrolladoraDAO(Connection conexion) {
         this.conexion = conexion;
     }
-    public List<Desarrollladora> obtenerDesarrolladora() {
-        List<Desarrollladora> desarrollladoras = new ArrayList<>();
+    public List<Desarrolladora> obtenerDesarrolladora() {
+        List<Desarrolladora> desarrolladoras = new ArrayList<>();
         String sql = "SELECT id,nombre FROM desarrolladora";
-        try (PreparedStatement statement= conexion.prepareStatement(sql);
-             ResultSet resultSet=statement.executeQuery()){
-            while (resultSet.next()){
-                int id=resultSet.getInt("id");
-                String nombre=resultSet.getString("nombre");
-
-                Desarrollladora desarrollladora=new Desarrollladora(id,nombre);
-                desarrollladoras.add(desarrollladora);
+        String nombre;
+        try (PreparedStatement statement = conexion.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                nombre = resultSet.getString("nombre");
+                Desarrolladora desarrolladora = new Desarrolladora(id, nombre);
+                desarrolladoras.add(desarrolladora);
             }
-        }catch (SQLException e){
-            throw new RuntimeException("Error al obtener los empleado"+e.getMessage(),e);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al obtener los empleado" + e.getMessage(), e);
         }
-        return desarrollladoras;
+        return desarrolladoras;
     }
-    public void agragarDesarrolladora(String nombre)throws SQLException {
-        String sql="INSERT INTO Desarrolladora(nombre) VALUES(?)";
-        try (PreparedStatement stmt=conexion.prepareStatement(sql)){
-            stmt.setString(1,nombre);
-            stmt.executeUpdate();
-        }catch (SQLException e){
-            throw new RuntimeException("Error al obtener la desarrolladora"+e.getMessage(),e);
+        public void agregarDesarrolladora(String nombre)throws SQLException {
+            String sql = "INSERT INTO Desarrolladora(nombre) VALUES(?)";
+            try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
+                stmt.setString(1, nombre);
+                stmt.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException("Error al obtener la desarrolladora" + e.getMessage(), e);
+            }
+        }
+        public void eliminarDesarrolladora (int id)throws SQLException {
+            String sql = "DELETE FROM desarrolladora WHERE id=?";
+            try (PreparedStatement stmt = conexion.prepareStatement(sql)) {
+                stmt.setInt(1, id);
+                stmt.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException("Error al eliminar la Desarrolladora: " + e.getMessage());
+            }
         }
     }
-}

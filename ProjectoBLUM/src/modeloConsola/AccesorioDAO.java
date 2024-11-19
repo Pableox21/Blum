@@ -45,4 +45,13 @@ public class AccesorioDAO {
             throw new RuntimeException("Error al obtener los accesorios"+e.getMessage(),e);
         }
     }
+    public void eliminarAccesorio(int id)throws SQLException{
+        String sql="DELETE FROM accesorio WHERE id=?";
+        try (PreparedStatement stmt= conexion.prepareStatement(sql)){
+            stmt.setInt(1,id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException("Error al eliminar el accesorio: "+e.getMessage());
+        }
+    }
 }
