@@ -14,7 +14,7 @@ public class AccesorioDAO {
     }
     public List<Accesorio> obtenerAccesorio() {
         List<Accesorio> accesorios = new ArrayList<>();
-        String sql = "SELECT accesorio.id,accesorio.nombre,precio,existencias,desarrolladora.nombre FROM accesorio JOIN desarrolladora ON desarrolladora.id=consola.id_desarrolladora  ORDER BY accesorio.id asc";
+        String sql = "SELECT accesorio.id,accesorio.nombre,precio,existencias,desarrolladora.nombre FROM accesorio JOIN desarrolladora ON desarrolladora.id=accesorio.id_desarrolladora  ORDER BY accesorio.id asc";
         try (PreparedStatement statement= conexion.prepareStatement(sql);
              ResultSet resultSet=statement.executeQuery()){
             while (resultSet.next()){
@@ -37,8 +37,8 @@ public class AccesorioDAO {
         try(PreparedStatement stmt=conexion.prepareStatement(sql)){
             stmt.setString(1,nombre);
             stmt.setDouble(2,precio);
-            stmt.setInt(4,existencias);
-            stmt.setInt(5,id_dessarroladora);
+            stmt.setInt(3,existencias);
+            stmt.setInt(4,id_dessarroladora);
             stmt.executeUpdate();
         }catch(SQLException e){
             throw new RuntimeException("Error al agregar los accesorios"+e.getMessage(),e);
