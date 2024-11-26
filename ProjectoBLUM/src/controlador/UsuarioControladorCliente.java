@@ -26,7 +26,7 @@ public class UsuarioControladorCliente {
         String email= xy.nextLine();
 
         usuarioDAOCliente.agregarUsuarioCliente(nombre,email);
-        System.out.println("Usuario agregado con exito.");
+        System.out.println("Cliente agregado con exito.");
     }
     public void eliminarUsuarioCliente()throws SQLException{
         Scanner xy=new Scanner(System.in);
@@ -34,5 +34,18 @@ public class UsuarioControladorCliente {
         int id= xy.nextInt();
         usuarioDAOCliente.eliminarUsuarioCliente(id);
             System.out.println("Cliente eliminado correctamente.");
+    }
+    public void editarCliente()throws SQLException{
+        Scanner xy=new Scanner(System.in);
+        System.out.print("Ingrese el ID del Cliente a Editar: ");
+        int id= xy.nextInt();
+        xy.nextLine();
+        System.out.print("Ingrese el nombre : ");
+        String nuevoNombre= xy.nextLine();
+        System.out.print("Ingrese el email : ");
+        String nuevoEmail= xy.nextLine();
+
+        usuarioDAOCliente.editarCliente(nuevoNombre,nuevoEmail,id);
+        System.out.println("Cliente editado correctamente.");
     }
 }

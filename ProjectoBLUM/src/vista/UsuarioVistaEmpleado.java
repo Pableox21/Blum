@@ -10,9 +10,9 @@ public class UsuarioVistaEmpleado {
         if(usuariosEmpleado.isEmpty()){
             System.out.println("No hay usuarios registrados.");
         }else{
-            System.out.printf("%5s %15s %25S\n","ID","NOMBRE","EMAIL");
+            System.out.printf("%5s %25s %25S\n","ID","NOMBRE","EMAIL");
             for(UsuarioEmpleado usuarioEmpleado:usuariosEmpleado){
-                System.out.printf("%5s %15s %25s\n",usuarioEmpleado.getId(),usuarioEmpleado.getNombre(),usuarioEmpleado.getEmail());
+                System.out.printf("%5s %25s %25s\n",usuarioEmpleado.getId(),usuarioEmpleado.getNombre(),usuarioEmpleado.getEmail());
             }
         }
     }

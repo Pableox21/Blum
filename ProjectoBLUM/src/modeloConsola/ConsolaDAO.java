@@ -13,7 +13,7 @@ public class ConsolaDAO {
     }
     public List<Consola> obtenerConsola() {
         List<Consola> consolas = new ArrayList<>();
-        String sql = "SELECT id,nombre,precio,existencias,desarrolladora.id_desarrolladora,desarrolladora.nombre FROM Consola JOIN desarrolladora ON desarrolladora.id=consola.id_desarrolladora";
+        String sql = "SELECT Consola.id,Consola.nombre,precio,existencias,desarrolladora.nombre FROM Consola JOIN desarrolladora ON desarrolladora.id=consola.id_desarrolladora  ORDER BY consola.id asc";
         try (PreparedStatement statement= conexion.prepareStatement(sql);
              ResultSet resultSet=statement.executeQuery()){
             while (resultSet.next()){
@@ -21,10 +21,9 @@ public class ConsolaDAO {
                 String nombre=resultSet.getString("nombre");
                 Double precio=resultSet.getDouble("precio");
                 int existencias=resultSet.getInt("existencias");
-                int id_desarroladora=resultSet.getInt("id Desarroladora");
-                String nombreDesarrrolladora=resultSet.getString("Desarrolladora");
+                String nombreDesarrrolladora=resultSet.getString("Desarrolladora.nombre");
 
-                Consola consola=new Consola(id,nombre,precio,existencias,id_desarroladora,nombreDesarrrolladora);
+                Consola consola=new Consola(id,nombre,precio,existencias,nombreDesarrrolladora);
                 consolas.add(consola);
             }
         }catch (SQLException e){
@@ -37,8 +36,8 @@ public class ConsolaDAO {
         try(PreparedStatement stmt=conexion.prepareStatement(sql)){
             stmt.setString(1,nombre);
             stmt.setDouble(2,precio);
-            stmt.setInt(4,existencias);
-            stmt.setInt(5,id_dessarrolladora);
+            stmt.setInt(3,existencias);
+            stmt.setInt(4,id_dessarrolladora);
             stmt.executeUpdate();
         }catch(SQLException e){
             throw new RuntimeException("Error al obtener las consolas"+e.getMessage(),e);
@@ -51,6 +50,19 @@ public class ConsolaDAO {
             stmt.executeUpdate();
         }catch (SQLException e){
             throw new RuntimeException("Error al eliminar la consola: "+e.getMessage());
+        }
+    }
+    public void editarConsola(String nuevoNombre,Double nuevoPrecio,int nuevoExistencia,int nuevoid_dessarroladora,int id)throws SQLException{
+        String sql="UPDATE consola SET nombre=?,precio=?,existencias=?,id_desarrolladora=? WHERE id=?";
+        try(PreparedStatement stmt=conexion.prepareStatement(sql)){
+            stmt.setString(1,nuevoNombre);
+            stmt.setDouble(2,nuevoPrecio);
+            stmt.setInt(3,nuevoExistencia);
+            stmt.setInt(4,nuevoid_dessarroladora);
+            stmt.setInt(5,id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException("Error al actualizar datos: "+e.getMessage());
         }
     }
 }

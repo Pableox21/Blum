@@ -14,18 +14,17 @@ public class AccesorioDAO {
     }
     public List<Accesorio> obtenerAccesorio() {
         List<Accesorio> accesorios = new ArrayList<>();
-        String sql = "SELECT id,nombre,precio,existencias,desarrolladora.id_desarrolladora,desarrolladora.nombre FROM accesorio JOIN desarrolladora ON desarrolladora.id=consola.id_desarrolladora";
+        String sql = "SELECT accesorio.id,accesorio.nombre,precio,existencias,desarrolladora.nombre FROM accesorio JOIN desarrolladora ON desarrolladora.id=consola.id_desarrolladora  ORDER BY accesorio.id asc";
         try (PreparedStatement statement= conexion.prepareStatement(sql);
              ResultSet resultSet=statement.executeQuery()){
             while (resultSet.next()){
-                int id=resultSet.getInt("id");
-                String nombre=resultSet.getString("nombre");
+                int id=resultSet.getInt("accesorio.id");
+                String nombre=resultSet.getString("accesorio.nombre");
                 Double precio=resultSet.getDouble("precio");
                 int existencias=resultSet.getInt("existencias");
-                int id_desarroladora=resultSet.getInt("id Desarroladora");
-                String nombreDesarrrolladora=resultSet.getString("Desarrolladora");
+                String nombreDesarrrolladora=resultSet.getString("Desarrolladora.nombre");
 
-                Accesorio accesorio=new Accesorio(id,nombre,precio,existencias,id_desarroladora,nombreDesarrrolladora);
+                Accesorio accesorio=new Accesorio(id,nombre,precio,existencias,nombreDesarrrolladora);
                 accesorios.add(accesorio);
             }
         }catch (SQLException e){
@@ -42,7 +41,7 @@ public class AccesorioDAO {
             stmt.setInt(5,id_dessarroladora);
             stmt.executeUpdate();
         }catch(SQLException e){
-            throw new RuntimeException("Error al obtener los accesorios"+e.getMessage(),e);
+            throw new RuntimeException("Error al agregar los accesorios"+e.getMessage(),e);
         }
     }
     public void eliminarAccesorio(int id)throws SQLException{
@@ -52,6 +51,19 @@ public class AccesorioDAO {
             stmt.executeUpdate();
         }catch (SQLException e){
             throw new RuntimeException("Error al eliminar el accesorio: "+e.getMessage());
+        }
+    }
+    public void editarAccesorio(String nuevoNombre,Double nuevoPrecio,int nuevoExistencia,int nuevoid_dessarroladora,int id)throws SQLException{
+        String sql="UPDATE accesorio SET nombre=?,precio=?,existencias=?,id_desarrolladora=? WHERE id=?";
+        try(PreparedStatement stmt=conexion.prepareStatement(sql)){
+            stmt.setString(1,nuevoNombre);
+            stmt.setDouble(2,nuevoPrecio);
+            stmt.setInt(3,nuevoExistencia);
+            stmt.setInt(4,nuevoid_dessarroladora);
+            stmt.setInt(5,id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException("Error al actualizar datos: "+e.getMessage());
         }
     }
 }

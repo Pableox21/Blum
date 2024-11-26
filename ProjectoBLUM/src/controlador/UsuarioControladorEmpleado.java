@@ -30,10 +30,23 @@ public class UsuarioControladorEmpleado {
         System.out.println("Usuario agregado con exito.");
     }
     public void eliminarUsuarioEmpleado()throws SQLException{
-         Scanner xy=new Scanner(System.in);
-       System.out.print("Ingrese el ID del Empleado a Eliminar: ");
+        Scanner xy=new Scanner(System.in);
+        System.out.print("Ingrese el ID del Empleado a Eliminar: ");
         int id= xy.nextInt();
         usuarioDAOEmpleado.eliminarUsuarioEmpleado(id);
         System.out.println("Empleado eliminado correctamente.");
+    }
+    public void editarEmpleado()throws SQLException{
+        Scanner xy=new Scanner(System.in);
+        System.out.print("Ingrese el ID del Empleado a Editar: ");
+        int id= xy.nextInt();
+        xy.nextLine();
+        System.out.print("Ingrese el nombre : ");
+        String nuevoNombre= xy.nextLine();
+        System.out.print("Ingrese el email : ");
+        String nuevoEmail= xy.nextLine();
+
+        usuarioDAOEmpleado.editarEmpleado(nuevoNombre,nuevoEmail,id);
+        System.out.println("Empleado editado correctamente.");
     }
 }

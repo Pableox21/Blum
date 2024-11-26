@@ -25,9 +25,7 @@ public class VideojuegoControlador {
         String nombre= xy.nextLine();
         System.out.print("Ingrese el precio : ");
         Double precio= xy.nextDouble();
-        System.out.println("Ingrese la clasificacion: ");
-        String clasificacion= xy.nextLine();
-        System.out.println("Ingrese las existencias: ");
+        System.out.print("Ingrese las existencias: ");
         int existencias= xy.nextInt();
         System.out.println("Ingrese la desarrolladora: ");
         System.out.println("1. PlayStation");
@@ -35,7 +33,8 @@ public class VideojuegoControlador {
         System.out.println("3. Nintendo");
         int id_deserrolladora=xy.nextInt();
 
-        videojuegosDAO.agregarVideojuego(nombre,precio,clasificacion,existencias,id_deserrolladora);
+        videojuegosDAO.agregarVideojuego(nombre,precio,existencias,id_deserrolladora);
+        System.out.println("Videojuego agregado corretamente");
     }
     public void eliminarVideojuego()throws SQLException{
         Scanner xy=new Scanner(System.in);
@@ -44,6 +43,25 @@ public class VideojuegoControlador {
         videojuegosDAO.eliminarVideojuego(id);
         System.out.println("Videojuego eliminado correctamente.");
     }
+    public void editarVideojuego()throws SQLException{
+        Scanner xy=new Scanner(System.in);
+        System.out.print("Ingrese el ID del videojuego a Editar: ");
+        int id= xy.nextInt();
+        xy.nextLine();
+        System.out.print("Ingrese el nombre : ");
+        String nuevoNombre= xy.nextLine();
+        System.out.print("Ingrese el precio : ");
+        Double nuevoPrecio= xy.nextDouble();
+        System.out.print("Ingrese las existencias : ");
+        int nuevoExistencia= xy.nextInt();
+        System.out.println("Ingrese la desarrolladora : ");
+        System.out.println("1. PlayStation");
+        System.out.println("2. Xbox");
+        System.out.println("3. Nintendo");
+        int nuevoid_dessarroladora= xy.nextInt();
 
+        videojuegosDAO.editarVideojuegos(nuevoNombre,nuevoPrecio,nuevoExistencia,nuevoid_dessarroladora,id);
+        System.out.println("Videojuego editado correctamente.");
+    }
 }
 

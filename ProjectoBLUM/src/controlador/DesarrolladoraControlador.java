@@ -30,9 +30,20 @@ public class DesarrolladoraControlador {
     }
     public void eliminarDesarroladora()throws SQLException{
         Scanner xy=new Scanner(System.in);
-        System.out.print("Ingrese el ID del accesorio a Eliminar: ");
+        System.out.print("Ingrese el ID del desarrolladora a Eliminar: ");
         int id= xy.nextInt();
         desarrolladoraDAO.eliminarDesarrolladora(id);
-        System.out.println("Accesorio eliminado correctamente.");
+        System.out.println("Desarrolladora eliminado correctamente.");
+    }
+    public void editarDesarrolladora()throws SQLException{
+        Scanner xy=new Scanner(System.in);
+        System.out.print("Ingrese el ID de la desarrolladora a Editar: ");
+        int id= xy.nextInt();
+        xy.nextLine();
+        System.out.print("Ingrese el nombre : ");
+        String nuevoNombre= xy.nextLine();
+
+        desarrolladoraDAO.editarDesarrolladora(nuevoNombre,id);
+        System.out.println("Desarrolladora editada correctamente.");
     }
 }

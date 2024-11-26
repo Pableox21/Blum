@@ -5,12 +5,13 @@ public class Accesorio {
     private String nombre;
     private Double precio;
     private int existencias;
-
-    public Accesorio(int id, String nombre, Double precio, int existencias, int id_desarroladora, String nombreDesarrrolladora) {
+    String nombreDesarrolladora;
+    public Accesorio(int id, String nombre, Double precio, int existencias, String nombreDesarrrolladora) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.existencias = existencias;
+        this.nombreDesarrolladora=nombreDesarrrolladora;
     }
 
     public int getId() {
@@ -43,5 +44,13 @@ public class Accesorio {
 
     public void setExistencias(int existencias) {
         this.existencias = existencias;
+    }
+
+    public String getNombreDesarrolladora() {
+        return nombreDesarrolladora;
+    }
+
+    public void setNombreDesarrolladora(String nombreDesarrolladora) {
+        this.nombreDesarrolladora = nombreDesarrolladora;
     }
 }

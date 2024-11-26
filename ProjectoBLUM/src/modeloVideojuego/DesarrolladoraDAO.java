@@ -14,7 +14,7 @@ public class DesarrolladoraDAO {
     }
     public List<Desarrolladora> obtenerDesarrolladora() {
         List<Desarrolladora> desarrolladoras = new ArrayList<>();
-        String sql = "SELECT id,nombre FROM desarrolladora";
+        String sql = "SELECT id,nombre FROM desarrolladora order by desarrolladora.id asc";
         String nombre;
         try (PreparedStatement statement = conexion.prepareStatement(sql);
              ResultSet resultSet = statement.executeQuery()) {
@@ -25,7 +25,7 @@ public class DesarrolladoraDAO {
                 desarrolladoras.add(desarrolladora);
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Error al obtener los empleado" + e.getMessage(), e);
+            throw new RuntimeException("Error al obtener las desarrolladoras" + e.getMessage(), e);
         }
         return desarrolladoras;
     }
@@ -47,4 +47,14 @@ public class DesarrolladoraDAO {
                 throw new RuntimeException("Error al eliminar la Desarrolladora: " + e.getMessage());
             }
         }
+    public void editarDesarrolladora(String nuevoNombre,int id)throws SQLException{
+        String sql="UPDATE desarrolladora SET nombre=? WHERE id=?";
+        try(PreparedStatement stmt=conexion.prepareStatement(sql)){
+            stmt.setString(1,nuevoNombre);
+            stmt.setInt(2,id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException("Error al actualizar datos: "+e.getMessage());
+        }
+    }
     }

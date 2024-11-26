@@ -10,9 +10,9 @@ public class UsuarioVistaCliente {
         if(usuariosCliente.isEmpty()){
             System.out.println("No hay usuarios registrados.");
         }else{
-            System.out.printf("%5s %15s %25S\n","ID","NOMBRE","EMAIL");
+            System.out.printf("%5s %25s %25S\n","ID","NOMBRE","EMAIL");
             for(UsuarioCliente usuarioCliente:usuariosCliente){
-                System.out.printf("%5s %15s %25s\n",usuarioCliente.getId(),usuarioCliente.getNombre(),usuarioCliente.getEmail());
+                System.out.printf("%5s %25s %25s\n",usuarioCliente.getId(),usuarioCliente.getNombre(),usuarioCliente.getEmail());
             }
         }
     }

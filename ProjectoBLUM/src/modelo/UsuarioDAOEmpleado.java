@@ -48,4 +48,15 @@ public class UsuarioDAOEmpleado {
             throw new RuntimeException("Error al eliminar el empleado: "+e.getMessage());
         }
     }
+    public void editarEmpleado(String nuevoNombre,String nuevoEmail,int id)throws SQLException{
+        String sql="UPDATE usuariosEmpleado SET nombre=?,email=? WHERE id=?";
+        try(PreparedStatement stmt=conexion.prepareStatement(sql)){
+            stmt.setString(1,nuevoNombre);
+            stmt.setString(2,nuevoEmail);
+            stmt.setInt(3,id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException("Error al actualizar datos: "+e.getMessage());
+        }
+    }
 }

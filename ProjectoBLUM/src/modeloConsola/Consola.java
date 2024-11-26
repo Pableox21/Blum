@@ -5,12 +5,14 @@ public class Consola {
     private String nombre;
     private Double precio;
     private int existencias;
+    private String nombreDesarrolladora;
 
-    public Consola(int id, String nombre, Double precio, int existencias, int id_desarroladora, String nombreDesarrrolladora) {
+    public Consola(int id, String nombre, Double precio, int existencia, String nombreDesarrrolladora) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.existencias = existencias;
+        this.nombreDesarrolladora=nombreDesarrrolladora;
     }
 
     public int getId() {
@@ -43,5 +45,13 @@ public class Consola {
 
     public void setExistencias(int existencias) {
         this.existencias = existencias;
+    }
+
+    public String getNombreDesarrolladora() {
+        return nombreDesarrolladora;
+    }
+
+    public void setNombreDesarrolladora(String nombreDesarrolladora) {
+        this.nombreDesarrolladora = nombreDesarrolladora;
     }
 }

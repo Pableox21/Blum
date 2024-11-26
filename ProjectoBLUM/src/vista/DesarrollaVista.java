@@ -10,7 +10,7 @@ public class DesarrollaVista {
         if(desarrolladoras.isEmpty()){
             System.out.println("No hay desarrolladoras registrados.");
         }else{
-            System.out.printf("%5s %25s\n","ID","DESARROLLADORA");
+            System.out.printf("%5s %25s\n","ID","NOMBRE");
             for(Desarrolladora desarrolladora : desarrolladoras){
                 System.out.printf("%5s %25s\n", desarrolladora.getId(), desarrolladora.getNombre());
             }
